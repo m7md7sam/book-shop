@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Cart = ({ booksinCard }) => {
+const Cart = ({ booksinCard, deleteFromCart }) => {
       const renderBooks = booksinCard.map(book => {
         return (
             <div className="ui middle aligned divided list" key={book.id}>
                 <div className="item">
                     <div className="right floated content">
-                        <div className="ui button">Delete</div>
+                        <div onClick={() => deleteFromCart(book.id)} className="ui button">Delete</div>
                     </div>
                     <img className="ui mini image" alt={book.title} src={book.imageLink} />
                     <div className="content ui breadcrumb">

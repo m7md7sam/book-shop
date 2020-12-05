@@ -15,7 +15,12 @@ class App extends Component {
   
   addToCart = (book) => {
     this.setState({booksinCard: [...this.state.booksinCard, book]})
-}
+};
+
+deleteFromCart = (id) => {
+  const books = this.state.booksinCard.filter(book => book.id !== id);
+  this.setState({booksinCard: books});
+};
   
   render() {
     return (
@@ -27,7 +32,7 @@ class App extends Component {
               <BookList addToCart={this.addToCart} />
             </Route>
             <Route path="/cart" exact>
-              <Cart booksinCard={this.state.booksinCard}/>
+              <Cart deleteFromCart={this.deleteFromCart} booksinCard={this.state.booksinCard}/>
             </Route>
             <Route path="/book/:id" exact render={(props) => <BookDetails {...props} addToCart={this.addToCart}/>} />
           </div>
